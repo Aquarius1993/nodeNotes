@@ -1,0 +1,20 @@
+<% if(locals.notes.length) { %>
+	<div class="notes_list">
+		<% notes.forEach(function(note){ %>
+			<div  class="">
+				<div class="notes_item">
+					<h4>
+						<%= note.title %>
+					</h4>
+					<p>
+						<%= note.cotent %>
+					</p>
+					<a href='/delNote?id=<%= note._id%>' id='<%= note._id%>' data-id='<%= note._id%>' class="delete">删除</a>
+					<span class="date">
+						posted @ <%= note.addData %>
+					</span>
+				</div>
+			</div>
+		<%}) %>
+	</div>
+<% } %>

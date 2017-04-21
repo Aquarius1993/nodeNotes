@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">           
+      <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/navbar-static-top.css" /> 
+    <link rel="stylesheet" href="/stylesheets/style.css">  
+  </head>
+  <body>
+      <% include header %> 
+		
+		<!-- <div>
+			<a href="/formidable">formidable实例</a>
+		</div> -->
+      <div class="container">
+        <% include note_header %> 
+        <div class="container_main">
+          <% include note_form %> 
+
+          <% include note_list %>
+        </div>
+        
+      </div>
+       
+     
+    <script src='/javascripts/jquery.min.js'></script>
+    <script>
+        $(function() {
+            $('#addNoteshow').on('click', function() {
+                $('.container .container_main .note_form_wrap').css('display','block');
+            });
+            $('.cancel_btn').click(function() {
+              $('.container .container_main .note_form_wrap').css('display','none');
+            })
+            // $('.notes_list').on('mouseenter mouseleave', '.notes_item' ,function(event) {
+            //     if(event.type == "mouseenter"){
+            //         console.log($(this).find('input.delete'));
+            //        $(this).find('input.delete').css('display','inline-block !important');
+            //     }else {
+            //         console.log($(this).find('input.delete'));
+            //         $(this).find('input.delete').css('display','none !important');
+            //     }
+            // })
+        });
+    </script>
+  </body>
+</html>
