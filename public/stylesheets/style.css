@@ -109,6 +109,9 @@
       .container .container_main .notes_list .notes_item p {
         font-family: "Source Han Sans CN";
         font-size: 18px; }
+        .notes_item .delete.disShow {
+          display: block;
+        }
       .notes_item .delete {
         position: absolute;
         width: 65px;

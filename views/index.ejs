@@ -35,15 +35,21 @@
             $('.cancel_btn').click(function() {
               $('.container .container_main .note_form_wrap').css('display','none');
             })
-            // $('.notes_list').on('mouseenter mouseleave', '.notes_item' ,function(event) {
-            //     if(event.type == "mouseenter"){
-            //         console.log($(this).find('input.delete'));
-            //        $(this).find('input.delete').css('display','inline-block !important');
-            //     }else {
-            //         console.log($(this).find('input.delete'));
-            //         $(this).find('input.delete').css('display','none !important');
-            //     }
-            // })
+           $(function() {
+            $('#addNoteshow').on('click', function() {
+                $('.container .container_main .note_form_wrap').css('display','block');
+            });
+            $('.cancel_btn').click(function() {
+              $('.container .container_main .note_form_wrap').css('display','none');
+            })
+            $('.notes_list').on('mouseenter mouseleave', '.notes_item' ,function(event) {
+                if(event.type == "mouseenter"){
+                   $(this).find('a.delete').addClass("disShow");
+                }else {
+                    $(this).find('a.delete').removeClass("disShow");
+                }
+            })
+        });
         });
     </script>
   </body>
