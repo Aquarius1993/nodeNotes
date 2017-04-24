@@ -1,7 +1,7 @@
 <% if(locals.notes.length) { %>
 	<div class="notes_list">
 		<% notes.forEach(function(note){ %>
-			<div  class="">
+			<div class="" onclick="window.location.href='listDes?id=<%= note._id%>'">
 				<div class="notes_item">
 					<h4>
 						<%= note.title %>

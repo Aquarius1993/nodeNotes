@@ -33,6 +33,15 @@ NoteData.findNotes = function(name, callback) {
 		callback(err, res);
 	})
 }
+NoteData.findNotesById = function(id, callback) {
+	Notes.findById(id, function(err, res) {
+		if (err) {
+			console.log('笔记获取失败！');
+			return;
+		}
+		callback(err, res);
+	});
+}
 NoteData.delNote = function(id, callback) {
 	var wherestr = {
 		'_id': id
@@ -46,9 +55,10 @@ NoteData.delNote = function(id, callback) {
 	});
 }
 
-NoteData.updateNote = function(id, callback) {
-	Notes.findByIdAndUpdate(id, function(err, res) {
+NoteData.updateNote = function(id, updatestr, callback) {
+	Notes.findByIdAndUpdate(id, updatestr, function(err, res) {
 		if (err) {
+			console.log(err);
 			console.log('笔记修改失败！');
 			return;
 		}

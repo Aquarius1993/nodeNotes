@@ -13,6 +13,7 @@ var repass = require('./routes/repass');
 var addnote = require('./routes/addnote');
 var delNote = require('./routes/delNote');
 var formidable = require('./routes/formidable');
+var listDes = require('./routes/listDes');
 
 var app = express();
 
@@ -41,6 +42,7 @@ app.use('/repass', repass);
 app.use('/addnote', addnote);
 app.use('/delNote', delNote);
 app.use('/formidable', formidable);
+app.use('/listDes', listDes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

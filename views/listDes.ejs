@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">           
+      <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/navbar-static-top.css" /> 
+    <link rel="stylesheet" href="/stylesheets/style.css">  
+  </head>
+  <body class="listDes">
+     <div class="container">
+      <div class="container_main">
+       <div class="note_form_wrap">
+          <form  action="" class="note_form" role="form" method="post">
+            <h5>笔记</h5>
+            <% if(locals.id) {%>
+              <input ref="title" type="text" class="your_title" placeholder="你的笔记的标题" name='title' value=<%= titleinput %> />
+              <input ref="id" type="text" class="your_id" placeholder="你的笔记的标题" name='id' value=<%= id %> />
+              <textarea ref="description" class="your_description" placeholder="笔记的内容" name='content'><%= content%>
+              </textarea>
+            <%}%>
+            <input type="button" value="取消" class="cancel_btn" />
+            <input type="submit" value="确认" class="confirm_btn" />
+          </form>
+      </div>
+      </div>
+    </div>
+    <script src='/javascripts/jquery.min.js'></script>
+    <script>
+    </script>
+  </body>
+</html>

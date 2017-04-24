@@ -17,7 +17,7 @@
         padding: 0;
         bottom: 0;
   }
-  
+
   #headerimg img {
     width: 100%;
     height: 100%;
@@ -56,6 +56,9 @@
   margin: 50px auto; }
   .container .note_form_wrap {
 		display: none;
+  }
+  .listDes .container .note_form_wrap {
+    display: block;
   }
   .container .container_main .note_form_wrap .note_form {
     position: relative;
@@ -189,4 +192,7 @@
 
 .form_animation-leave-active{
 	opacity: 0;
+}
+.your_id {
+  display: none;
 }
