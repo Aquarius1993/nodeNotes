@@ -7,7 +7,11 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if (locals.username) { %> 
-          <li><a href="#">  
+          <li>
+              <a href="/formidable" id='headerimg'>
+                <img src='<%= headerurl%>'/> 
+              </a>
+              <a class='username' href="#">  
               <!-- 这里的username是指session.username -->      
                 <%= username %>          
           </a></li>

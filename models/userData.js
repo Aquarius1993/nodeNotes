@@ -62,7 +62,21 @@ UserData.updataPass = function(username, newpass, callback) {
 			// console.log(res); //{ ok: 1, nModified: 1, n: 1 }
 	});
 }
-
+UserData.updateHeaderUrl = function(username, headerurl, callback) {
+	var wherestr = {
+		username: username
+	};
+	var newheaderUrl = {
+		headerurl: headerurl
+	};
+	User.update(wherestr, newheaderUrl, function(err, res) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		callback(err, res);
+	});
+}
 module.exports = UserData;
 
 // 插入

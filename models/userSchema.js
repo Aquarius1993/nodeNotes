@@ -15,6 +15,10 @@ var UserSchema = new Schema({
 	loginte: {
 		type: Date,
 		default: Date.now
-	} //最近登录时间
+	}, //最近登录时间
+	headerurl: {
+		type: 'string',
+		default: '/images/avatar/aa.jpg'
+	}
 });
 module.exports = mongoose.model('User', UserSchema);

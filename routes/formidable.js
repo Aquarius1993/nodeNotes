@@ -4,11 +4,16 @@ var express = require('express'),
 	formidable = require('formidable'),
 	fs = require('fs'),
 	TITLE = 'formidable上传文件',
-	AVATAR_UPLOAD_FOLDER = '/avatar/';
+	AVATAR_UPLOAD_FOLDER = '/images/avatar/';
+
+var UserData = require('../models/userData.js');
 
 router.get('/', function(req, res) {
-	res.render('formidable', {
-		title: TITLE
+	UserData.getUserByName(req.session.username, function(ere, result) {
+		res.locals.headerUrl = result[0].headerurl;
+		res.render('formidable', {
+			title: TITLE
+		});
 	});
 });
 
@@ -22,7 +27,7 @@ router.post('/', function(req, res) {
 	// 上传
 	form.parse(req, function(err, fields, files) {
 		if (err) {
-			res.locals.err = err;
+			res.locals.error = err;
 			res.render('formidable', {
 				title: TITLE
 			});
@@ -44,14 +49,14 @@ router.post('/', function(req, res) {
 				break;
 		}
 		if (files.fulAvatar.size > form.maxFieldsSize) {
-			res.locals.err = err;
+			res.locals.error = err;
 			res.render('formidable', {
 				title: TITLE
 			});
 			return;
 		}
 		if (extName.length == 0) {
-			res.locals.err = err;
+			res.locals.error = err;
 			res.render('formidable', {
 				title: TITLE
 			});
@@ -62,13 +67,23 @@ router.post('/', function(req, res) {
 		var newPath = form.uploadDir + avatarName;
 
 		fs.renameSync(files.fulAvatar.path, newPath); //重命名
-
-		res.locals.success = '上传成功';
-		res.locals.success2 = '上传成功！！！！！！';
-		res.render('formidable', {
-			title: TITLE
+		// console.log(newPath);public/images/avatar/71f55f70-288f-11e7-b4e1-476830ba506d.jpg
+		var headerUrl = newPath.substr(6);
+		UserData.updateHeaderUrl(req.session.username, headerUrl, function(err, result) {
+			if (result.ok) {
+				res.locals.headerUrl = headerUrl;
+				res.locals.success = '上传成功';
+				res.locals.success2 = '修改头像成功！！！！！！';
+				res.render('formidable', {
+					title: TITLE
+				});
+				return;
+			}
+			res.locals.error = "修改头像失败！！！！！！";
+			res.render('formidable', {
+				title: TITLE
+			});
 		});
-
 	});
 });
 
